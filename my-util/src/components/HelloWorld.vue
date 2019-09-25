@@ -3,17 +3,19 @@
     <a-button type="primary" @click="debounce_test2">防抖测试</a-button>
     <a-button type="primary" @click="generateRandom">生成随机密钥</a-button>
     <a-button type="primary" @click="formatData">格式化日期</a-button>
+    <div>测试日期{{date | DateFormat('yyyy-MM')}}</div>
   </div>
 </template>
 
 <script>
-import Util from "../common/util.js";
-import timeUtil from "../common/calendar";
+import Util from "../util/util.js";
+import timeUtil from "../util/calendar";
 export default {
   name: "HelloWorld",
   data() {
     return {
-      submit_count: 0 //记载提交次数
+      submit_count: 0, //记载提交次数
+      date:'',
     };
   },
   methods: {
@@ -31,7 +33,13 @@ export default {
     formatData(){
       let date = new Date();
       console.log(timeUtil.formateDate(date,'/'));
+    },
+    init(){
+      this.date=new Date();
     }
+  },
+  mounted(){
+    this.init();
   }
 };
 </script>
