@@ -4,6 +4,7 @@
     <a-button type="primary" @click="generateRandom">生成随机密钥</a-button>
     <a-button type="primary" @click="formatData">格式化日期</a-button>
     <div>测试日期{{date | DateFormat('yyyy-MM')}}</div>
+    <input type="text" v-all-number="type" />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ export default {
   name: "HelloWorld",
   data() {
     return {
+      type:"money",
       submit_count: 0, //记载提交次数
       date:'',
     };

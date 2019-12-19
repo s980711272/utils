@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import "./util/directive"
 import "./util/filter"
 import 'ant-design-vue/dist/antd.css';
 import {Button} from 'ant-design-vue';
