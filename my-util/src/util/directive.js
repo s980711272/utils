@@ -119,9 +119,9 @@ Vue.directive('allNumber', {
         return;
       }
       let type = binding.value; //传进来的type值
+      let length = binding.arg ? Number(binding.arg) : 2;
       let oldValue = input.value;
       let newValue = '';
-      debugger;
       if(type=='phone'){
         newValue = input.value.replace(/[^\d]/g, '');
         if(newValue && binding.value !== 'zeroBefore') {
@@ -133,6 +133,10 @@ Vue.directive('allNumber', {
         newValue = input.value.replace(/[^[.]\d]/g, '');
         if(newValue) {
           newValue = newValue.replace(/^[.]/g, '') // 不指定可以以0开头的时候 去掉开头多余的0
+          newValue = newValue.replace(/[.]+/g,'.'); //去除多余的小数点
+          if(newValue.indexOf('.') != -1){
+            newValue = newValue.substring(0,newValue.indexOf('.')+length+1)
+          }
         }
       }
       // 判断是否需要更新，避免进入死循环

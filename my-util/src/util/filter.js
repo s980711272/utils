@@ -63,7 +63,7 @@ Vue.filter("DateFormat",(val,format)=>{
 })
 
 /**
- * 手机号加*
+ * 手机号加* 脱敏
  */
 Vue.filter("phonePeel",function (value) {
   if(!value){
