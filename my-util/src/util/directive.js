@@ -122,21 +122,30 @@ Vue.directive('allNumber', {
       let length = binding.arg ? Number(binding.arg) : 2;
       let oldValue = input.value;
       let newValue = '';
+      let tempValue = input.value.replace(/[\u4E00-\u9FA5]/g,'');
       if(type=='phone'){
-        newValue = input.value.replace(/[^\d]/g, '');
+        newValue = tempValue.replace(/[^\d]/g, '');
         if(newValue && binding.value !== 'zeroBefore') {
           newValue = newValue.replace(/^\b(0+)/gi, '') // 不指定可以以0开头的时候 去掉开头多余的0
         }
       }else if(type=='checkCode'){
-        newValue = input.value.replace(/[^\d]/g, '');
+        newValue = tempValue.replace(/[^\d]/g, '');
       }else if(type == 'money'){
-        newValue = input.value.replace(/[^[.]\d]/g, '');
+        newValue = tempValue.replace(/[^[.]\d]/g, '');
         if(newValue) {
           newValue = newValue.replace(/^[.]/g, '') // 不指定可以以0开头的时候 去掉开头多余的0
           newValue = newValue.replace(/[.]+/g,'.'); //去除多余的小数点
           if(newValue.indexOf('.') != -1){
             newValue = newValue.substring(0,newValue.indexOf('.')+length+1)
           }
+        }
+      }else if(type == 'idCard'){
+        if(tempValue.length != 15 && tempValue.length != 18){
+          newValue = tempValue.replace(/[^\d]/g, '');
+        }else if(tempValue[tempValue.length-1] != 'X'){
+          newValue = tempValue.replace(/[^\d]/g, '');
+        }else{
+          newValue = input.value;
         }
       }
       // 判断是否需要更新，避免进入死循环

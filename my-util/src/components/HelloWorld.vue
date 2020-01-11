@@ -15,7 +15,7 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      type:"money",
+      type:"idCard",
       submit_count: 0, //记载提交次数
       date:'',
     };
