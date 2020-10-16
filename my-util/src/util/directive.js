@@ -102,7 +102,10 @@ Vue.directive('phoneNumber', {
 
 /**
  * input-输入纯数字
- * 正整数(phone),验证码(checkCode),金钱(money)
+ * 正整数(phone)：不能以0开头的正整数
+ * 验证码(checkCode):6位验证码
+ * 金钱(money):默认小数点为两位，可自行判定
+ * 身份证(idCard):身份证格式.****X;
  */
 Vue.directive('allNumber', {
   bind(el, binding, vnode) {
@@ -131,7 +134,8 @@ Vue.directive('allNumber', {
       }else if(type=='checkCode'){
         newValue = tempValue.replace(/[^\d]/g, '');
       }else if(type == 'money'){
-        newValue = tempValue.replace(/[^[.]\d]/g, '');
+        newValue = tempValue.replace(/[a-zA-Z]/g,'')
+        newValue = newValue.replace(/[^[.]\d]/g, ''); //去除以点开头的格式
         if(newValue) {
           newValue = newValue.replace(/^[.]/g, '') // 不指定可以以0开头的时候 去掉开头多余的0
           newValue = newValue.replace(/[.]+/g,'.'); //去除多余的小数点

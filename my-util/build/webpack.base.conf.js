@@ -3,7 +3,8 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-
+const HappyPack = require('happypack');
+// const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -23,7 +24,7 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json',".ts", ".tsx"],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
@@ -38,7 +39,8 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        // loader: 'babel-loader',
+        loader: 'happypack/loader?id=happyBabel',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
@@ -64,9 +66,44 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      //添加tsloader
+      {
+        test: /\.ts?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+         appendTsSuffixTo: [/\.vue$/],
+        }
       }
     ]
   },
+  plugins:[
+    new HappyPack({
+      //用id来标识 happypack处理那里类文件
+      id: 'happyBabel',
+      //如何处理  用法和loader 的配置一样
+      loaders: [{
+        loader: 'babel-loader?cacheDirectory=true',
+      }],
+      //允许 HappyPack 输出日志
+      verbose: true,
+    }),
+    // new ParallelUglifyPlugin({
+    //   // 传递给 UglifyJS的参数如下：
+    //   cacheDir: '.cache/',
+    //   uglifyJS:{
+    //     output: {
+    //       comments: false
+    //     },
+    //     warnings:false,
+    //     compress: {
+    //       drop_debugger: true,
+    //       drop_console: true
+    //     }
+    //   }
+    // }),
+  ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).
