@@ -9,9 +9,10 @@ import 'ant-design-vue/dist/antd.css';
 import {Button} from 'ant-design-vue';
 import Vant from 'vant';
 import 'vant/lib/index.css';
+import ElementUI from 'element-ui';
 
+Vue.use(ElementUI)
 Vue.use(Vant)
-
 Vue.use(Button);
 Vue.config.productionTip = false
 

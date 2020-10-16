@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Util from "../util/util.js";
 import timeUtil from "../util/calendar";
+import Util from '@/util/util'
 export default {
   name: "HelloWorld",
   data() {
