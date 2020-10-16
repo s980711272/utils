@@ -9,7 +9,9 @@ import 'ant-design-vue/dist/antd.css';
 import {Button} from 'ant-design-vue';
 import Vant from 'vant';
 import 'vant/lib/index.css';
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 
+Vue.use(VueAwesomeSwiper)
 Vue.use(Vant)
 
 Vue.use(Button);

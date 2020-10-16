@@ -5,6 +5,7 @@
     <a-button type="primary" @click="formatData">格式化日期</a-button>
     <div>测试日期{{date | DateFormat('yyyy-MM')}}</div>
     <input type="text" v-all-number="type" />
+    <div v-for="(item,index) in midArr" :key="index"></div>
   </div>
 </template>
 
@@ -15,9 +16,11 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      type:"idCard",
+      type:"money",
       submit_count: 0, //记载提交次数
       date:'',
+      midArr:[{type:'2',key:'2'}],
+      author:1,
     };
   },
   methods: {
@@ -45,6 +48,5 @@ export default {
   }
 };
 </script>
-
 <style scoped>
 </style>
