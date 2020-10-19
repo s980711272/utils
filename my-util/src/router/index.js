@@ -1,12 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import test from '@/view/test'
-import balanceAnalyse from '@/view/balanceAnalyse'
-import loanAnalyse from '@/view/loanAnalyse'
-
-
-
+import test from '@/view/test.vue'
+import testFrom from '@/view/testForm' //自动生成form表单
 Vue.use(Router)
 
 export default new Router({
@@ -17,14 +12,9 @@ export default new Router({
       component: test
     },
     {
-      path: '/analyse',
-      name: 'analyse',
-      component: balanceAnalyse
+      path: 'test',
+      name: 'test',
+      component: test
     },
-    {
-      path: '/loanAnalyse',
-      name: 'loanAnalyse',
-      component: loanAnalyse
-    }
   ]
 })
