@@ -72,7 +72,8 @@ export default {
           key: 'birthday',
           type: 'Date'
         }
-      ]
+      ],
+      requestParam:{}
     }
   },
   data () {

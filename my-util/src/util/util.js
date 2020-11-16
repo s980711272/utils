@@ -10,18 +10,19 @@ export default {
      * @param delay  延时时长
      */
     debounce: function (fn, delay) {
-        // 记录上一次的延时器
         var timer = null;
-        var delay = delay || 200;
-        return function () {
-            var args = arguments;
-            var that = this;
-            // 清除上一次延时器
-            clearTimeout(timer)
-            timer = setTimeout(function () {
-                fn.apply(that, args)
+        return function() {
+          let context = this;
+          let args    = arguments;
+          if(!timer){
+            timer = setTimeout(function(){
+                fn.apply(context, args);
+                timer = null;
             }, delay);
+          }
+          console.log(timer + '22')
         }
+
     },
 
     /**
@@ -34,5 +35,12 @@ export default {
             key += words[index];
         }
         return key;
+    },
+    //沉睡等待10s
+    *sleep(time){
+        console.log(1)
+        yield 1
+        console.log('我醒来了')
+        return 2
     }
 }

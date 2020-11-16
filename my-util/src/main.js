@@ -9,21 +9,12 @@ import 'ant-design-vue/dist/antd.css';
 import {Button} from 'ant-design-vue';
 import Vant from 'vant';
 import 'vant/lib/index.css';
-<<<<<<< HEAD
-import ElementUI from 'element-ui';
-=======
-import VueAwesomeSwiper from 'vue-awesome-swiper'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
->>>>>>> f2e23fec786cc2087847b17a5c8f476f2cd235f7
 
 Vue.use(ElementUI)
 Vue.use(Vant)
-<<<<<<< HEAD
-=======
-Vue.use(ElementUI);
 
->>>>>>> f2e23fec786cc2087847b17a5c8f476f2cd235f7
 Vue.use(Button);
 Vue.config.productionTip = false
 
