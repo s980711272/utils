@@ -1,47 +1,35 @@
+<!--
+ * @Descripttion: 功能描述
+ * @version: 1.0
+ * @Author: sdh
+ * @Date: 2020-10-21 14:47:16
+ * @LastEditors: sdh
+ * @LastEditTime: 2021-02-20 16:15:29
+-->
 <template>
   <div>
-    <el-button @click="handleClick">点击</el-button>
+    <el-select v-model="value">
+      <el-option v-for="item in items" :key="item.id" :value="item.value"></el-option>
+    </el-select>
   </div>
 </template>
 
 <script>
-import Util from '@/util/util'
-import axios from 'axios'
 export default {
   data(){
     return{
-      isLoding : false
+      value:1,
+      items: [],
     }
   },
   methods:{
-    handleClick(){
-      if(!this.isLoding){
-        this.isLoding = true
-        setTimeout(()=>this.test(),2000)
-      }
-    },
-    test(){
-      console.log('111')
-    },
-    sleep(){
-      let sleep = Util.sleep()
-      setTimeout(()=>{
-        sleep.next()
-        setTimeout(()=>{
-          console.log('我在沉睡，10s后醒来')
-          sleep.next()
-        },10000)
-      },10000)
-    },
     init(){
-      function add(a,b){
-        return a+b
-      }
-      add.toString = function(){
-        console.log('test')
-        return num
-      }
-      console.log(add(1,2))
+      setTimeout(()=>{
+        this.items = [
+          {id:1,value:11},
+          {id:2,value:33}
+        ]
+      },10000)
     }
   },
   mounted(){
