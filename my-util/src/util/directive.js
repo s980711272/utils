@@ -162,3 +162,15 @@ Vue.directive('allNumber', {
   }
 });
 
+Vue.directive('virtual-list', {
+  bind(el, binding) {
+    // 获取滚动页面DOM
+    let SCROLL_DOM = el.querySelector(
+      ".el-select-dropdown .el-select-dropdown__wrap"
+    );
+    SCROLL_DOM.addEventListener("scroll", function() {
+      binding.value(SCROLL_DOM);
+    });
+  }
+})
+

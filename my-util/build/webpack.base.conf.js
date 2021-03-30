@@ -4,6 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const HappyPack = require('happypack');
+const webpack = require("webpack")
 // const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -89,20 +90,11 @@ module.exports = {
       //允许 HappyPack 输出日志
       verbose: true,
     }),
-    // new ParallelUglifyPlugin({
-    //   // 传递给 UglifyJS的参数如下：
-    //   cacheDir: '.cache/',
-    //   uglifyJS:{
-    //     output: {
-    //       comments: false
-    //     },
-    //     warnings:false,
-    //     compress: {
-    //       drop_debugger: true,
-    //       drop_console: true
-    //     }
-    //   }
-    // }),
+    new webpack.ProvidePlugin({
+      $:"jquery",
+      jQuery:"jquery",
+     "windows.jQuery":"jquery"
+    }),
   ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue

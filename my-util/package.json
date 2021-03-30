@@ -15,6 +15,7 @@
     "echarts": "^4.8.0",
     "element-ui": "^2.13.2",
     "happypack": "^5.0.1",
+    "jquery": "^3.6.0",
     "jsencrypt": "^3.0.0-rc.1",
     "swiper": "^6.0.1",
     "v-charts": "^1.19.0",
