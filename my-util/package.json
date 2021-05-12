@@ -17,7 +17,7 @@
     "happypack": "^5.0.1",
     "jquery": "^3.6.0",
     "jsencrypt": "^3.0.0-rc.1",
-    "swiper": "^6.0.1",
+    "swiper": "^6.5.1",
     "v-charts": "^1.19.0",
     "vant": "^2.9.3",
     "vue": "^2.5.2",
