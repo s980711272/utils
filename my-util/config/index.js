@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 功能描述
+ * @version: 1.0
+ * @Author: sdh
+ * @Date: 2020-10-20 15:54:55
+ * @LastEditors: sdh
+ * @LastEditTime: 2021-05-24 17:15:11
+ */
 'use strict'
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
@@ -13,7 +21,7 @@ module.exports = {
     proxyTable: {},
 
     // Various Dev Server settings
-    host: '192.168.123.233', // can be overwritten by process.env.HOST192.168.123.233
+    host: 'localhost', // can be overwritten by process.env.HOST192.168.123.233
     port: 8085, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
